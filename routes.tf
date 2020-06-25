@@ -11,7 +11,7 @@ resource "aws_route_table" "public-rt" {
   }
 }
 
-resource "aws_route_table_association" "a" {
+resource "aws_route_table_association" "public-a" {
   count          = length(tolist(aws_subnet.public-subnet.*.id))
   subnet_id      = element(tolist(aws_subnet.public-subnet.*.id),count.index )
   route_table_id = aws_route_table.public-rt.id
@@ -30,7 +30,7 @@ resource "aws_route_table" "private-rt" {
   }
 }
 
-resource "aws_route_table_association" "a" {
+resource "aws_route_table_association" "private-a" {
   count          = length(tolist(aws_subnet.private-subnet.*.id))
   subnet_id      = element(tolist(aws_subnet.private-subnet.*.id),count.index )
   route_table_id = aws_route_table.public-rt.id
