@@ -15,6 +15,9 @@ resource "aws_volume_attachment" "ebs_att" {
 }
 
 resource "null_resource" "jenkins-install" {
+  triggers {
+    date   = timestamp()
+  }
   connection {
     host                  = aws_instance.jenkins.private_ip
     user                  = "root"
