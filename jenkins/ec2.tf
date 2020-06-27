@@ -15,7 +15,7 @@ resource "aws_volume_attachment" "ebs_att" {
 }
 
 resource "null_resource" "jenkins-install" {
-  triggers {
+  triggers = {
     date   = timestamp()
   }
   connection {
