@@ -1,4 +1,4 @@
-resource "aws_instance" "web" {
+resource "aws_instance" "jenkins" {
   ami           = "ami-0c84a3e93390c29bc"
   instance_type = "t3.medium"
 
@@ -7,3 +7,38 @@ resource "aws_instance" "web" {
   }
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
 }
+
+resource "null_resource" "jenkins-install" {
+  connection {
+    host                  = aws_instance.jenkins.private_ip
+    user                  = "root"
+    password              = "DevOps321"
+  }
+
+  provisioner "file" {
+    source                  = "scripts/install-jenkins.sh"
+    destination             = "/tmp/jenkins.sh"
+  }
+
+  provisioner "file" {
+    source                  = "scripts/02admin-user.groovy"
+    destination             = "/tmp/02admin-user.groovy"
+  }
+
+  provisioner "file" {
+    source                  = "scripts/01plugins.groovy"
+    destination             = "/tmp/01plugins.groovy"
+  }
+
+  provisioner "file" {
+    source                  = "scripts/03authorize.groovy"
+    destination             = "/tmp/03authorize.groovy"
+  }
+
+  provisioner "remote-exec" {
+    inline                  = [
+      "sh /tmp/jenkins.sh"
+    ]
+  }
+}
+
