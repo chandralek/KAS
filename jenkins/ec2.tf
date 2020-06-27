@@ -8,6 +8,12 @@ resource "aws_instance" "jenkins" {
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
 }
 
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sdh"
+  volume_id   = "vol-03c5753c0de574ec8"
+  instance_id = aws_instance.jenkins.id
+}
+
 resource "null_resource" "jenkins-install" {
   connection {
     host                  = aws_instance.jenkins.private_ip
