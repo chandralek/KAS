@@ -1,5 +1,5 @@
 data aws_vpc "vpc"{
-  id = data.terraform_remote_state.vpc.output.VPC_ID
+  id = data.terraform_remote_state.vpc.outputs.VPC_ID
 }
 
 resource "aws_security_group" "allow_redis" {
