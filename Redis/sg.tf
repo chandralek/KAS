@@ -4,6 +4,7 @@ data aws_vpc "vpc"{
 
 resource "aws_security_group" "allow_redis" {
   name          = "allow_redis"
+  vpc_id        = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
     description = "TLS from VPC"
