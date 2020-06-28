@@ -47,7 +47,7 @@ resource "null_resource" "jenkins-install" {
 
   provisioner "remote-exec" {
     inline                  = [
-      "sh /tmp/jenkins.sh"
+      "sh /tmp/jenkins.sh","curl -s https://raw.githubusercontent.com/linuxautomations/labautomation/master/tools/terraform/install.sh|sudo bash"
     ]
   }
 }
