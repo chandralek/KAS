@@ -16,5 +16,5 @@ resource "aws_db_parameter_group" "mysql-db-parameter" {
 }
 
 resource "aws_db_subnet_group" "mysql-subnet-group" {
-  subnet_ids = [tolist(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS)]
+  subnet_ids = tolist(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS)
 }
