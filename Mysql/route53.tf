@@ -1,8 +1,8 @@
 resource "aws_route53_record" "www" {
-  zone_id = "${aws_route53_zone.primary.zone_id}"
-  name    = "www.example.com"
+  zone_id = "Z06359783V969HYMH8KRR"
+  name    = "mysql-nonprod.devops46.online"
   type    = "A"
-  ttl     = "300"
-  records = ["${aws_eip.lb.public_ip}"]
+  ttl     = "5"
+  records = [aws_db_instance.default.address]
 }
 
