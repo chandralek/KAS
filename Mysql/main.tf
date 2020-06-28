@@ -10,9 +10,9 @@ resource "aws_db_instance" "default" {
   parameter_group_name = aws_db_parameter_group.mysql-db-parameter.name
   db_subnet_group_name = aws_db_subnet_group.mysql-subnet-group.name
   vpc_security_group_ids = [aws_security_group.allow_mysql.id]
-  identifier            = "mysql-nonprod"
-  skip_final_snapshot = "true"
-  final_snapshot_identifier = "DELETE ME"
+  //identifier            = "mysql-nonprod"
+  //skip_final_snapshot = "true"
+  //final_snapshot_identifier = "DELETE ME"
 }
 
 data aws_vpc "vpc"{
