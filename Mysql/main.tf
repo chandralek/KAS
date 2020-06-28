@@ -4,7 +4,7 @@ resource "aws_db_instance" "default" {
   engine               = "mysql"
   engine_version       = "5.6"
   instance_class       = "db.t2.micro"
-  name                 = "mysqlnonprod"
+  name                 = "mysql"
   username             = "admin"
   password             = "admin"
   parameter_group_name = aws_db_parameter_group.mysql-db-parameter.name
