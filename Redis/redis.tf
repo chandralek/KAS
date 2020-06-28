@@ -16,6 +16,6 @@ resource "aws_elasticache_parameter_group" "redis-5-0-6-pg" {
 }
 
 resource "aws_elasticache_subnet_group" "redis-subnet-group-name" {
-  name       = "redis-subnet-group.name"
+  name       = "redis-subnet-group-name"
   subnet_ids = tolist(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS)
 }
