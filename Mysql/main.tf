@@ -5,8 +5,8 @@ resource "aws_db_instance" "default" {
   engine_version       = "5.6"
   instance_class       = "db.t2.micro"
   name                 = "roboshop"
-  username             = "admin"
-  password             = "admin"
+  username             = "roboshop"
+  password             = "DevOps321"
   parameter_group_name = aws_db_parameter_group.mysql-db-parameter.name
   db_subnet_group_name = aws_db_subnet_group.mysql-subnet-group.name
 }
