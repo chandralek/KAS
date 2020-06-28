@@ -9,7 +9,7 @@ pipeline{
     stage('terraform init'){
       when{
         expression{
-          return  ${params.CHOICE} == 'APPLY'
+          return  params.CHOICE == 'APPLY'
         }
       }
       steps{
