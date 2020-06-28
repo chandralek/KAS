@@ -5,6 +5,7 @@ resource "aws_instance" "jenkins" {
   tags = {
     Name = "jenkins"
   }
+  iam_instance_profile = "instance_role"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
 }
 
