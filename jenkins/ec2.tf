@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins" {
   ami           = "ami-0c84a3e93390c29bc"
-  instance_type = "t3.medium"
+  instance_type  = "t3.micro"
   availability_zone = "us-west-2a"
   tags = {
     Name = "jenkins"
